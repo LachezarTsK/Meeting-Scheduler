@@ -5,7 +5,7 @@ using namespace std;
 class Solution {
     
 public:
-    vector<int> minAvailableDuration(vector<vector<int>>& slots_firstPerson, vector<vector<int>>& slots_secondPerson, int duration) {
+    vector<int> minAvailableDuration(vector<vector<int>>& slots_firstPerson, vector<vector<int>>& slots_secondPerson, int duration) const {
 
         auto smallerStartingTimeOnTop = [](const auto& x, const auto& y) {return x[0] < y[0];};
         sort(slots_firstPerson.begin(), slots_firstPerson.end(), smallerStartingTimeOnTop);
