@@ -23,7 +23,7 @@ class Solution {
 
 
 public:
-    vector<int> minAvailableDuration(vector<vector<int>>& slots_firstPerson, vector<vector<int>>& slots_secondPerson, int duration) {
+    vector<int> minAvailableDuration(vector<vector<int>>& slots_firstPerson, vector<vector<int>>& slots_secondPerson, int duration) const {
 
         MinHeap minHeap(smallerStartingTimeOnTop);
         fill_minHeap(minHeap, slots_firstPerson, duration);
@@ -41,10 +41,10 @@ public:
     }
 
 private:
-    void fill_minHeap(MinHeap& minHeap, const vector<vector<int>>& slots, int duration) {
+    void fill_minHeap(MinHeap& minHeap, const vector<vector<int>>& slots, int duration) const {
         for (const auto& slot : slots) {
             if (slot[1] - slot[0] >= duration) {
-                minHeap.push(SlotCoveringDuration(slot[0], slot[1]));
+                minHeap.emplace(slot[0], slot[1]);
             }
         }
     }
